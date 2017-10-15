@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VendasController">
+   <children>
+      <Pane prefHeight="99.0" prefWidth="200.0" style="-fx-background-color: blue; -fx-border-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="71.0" fitWidth="90.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icones/cesta.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="105.0" layoutY="15.0" text="Caixa Livre" textFill="#e4980c">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="50.0" />
+               </font>
+            </Label>
+            <Pane fx:id="painelDataHora" layoutX="669.0" layoutY="19.0">
+               <children>
+                  <Label fx:id="lbDataAtual" layoutY="41.0" text="06/09/17" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane layoutY="110.0" prefHeight="150.0" prefWidth="172.0" style="-fx-background-color: blue; -fx-border-color: black;" AnchorPane.leftAnchor="0.0">
+         <children>
+            <ImageView fitHeight="139.0" fitWidth="133.0" layoutX="20.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icones/cliente.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutY="260.0" prefHeight="139.0" prefWidth="397.0" style="-fx-background-color: blue; -fx-border-color: black;" AnchorPane.leftAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="7.0" spacing="10.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="25.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="Cliente:" textFill="WHITE" />
+                        <Label fx:id="lbNomeCli" text="Nome do Cliente" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="13.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="41.0" text="Endereço:" textFill="WHITE" />
+                        <Label fx:id="lbEnderecoCli" text="Endereço do Cliente" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="25.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="71.0" text="Cidade:" textFill="WHITE" />
+                        <Label fx:id="lbCidadeCli" text="Cidade do Cliente" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="11.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="104.0" text="CPF/CNPJ:" textFill="WHITE" />
+                        <Label fx:id="lbCPFCNPJCli" text="00.000.000/0001-00" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="15.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="128.0" text="Situação:" textFill="WHITE" />
+                        <Label fx:id="lbStatusCli" text="Ativo" textFill="WHITE" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane layoutY="407.0" prefHeight="62.0" prefWidth="397.0" style="-fx-background-color: blue; -fx-border-color: black;" AnchorPane.leftAnchor="0.0">
+         <children>
+            <Label layoutX="14.0" layoutY="6.0" text="Código de Barras:" textFill="WHITE" />
+            <TextField fx:id="tfCodBarras" layoutX="14.0" layoutY="23.0" prefHeight="30.0" prefWidth="322.0" />
+            <Button layoutX="344.0" layoutY="23.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icones/buscar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Procurar Produtos" />
+               </tooltip>
+            </Button>
+         </children>
+      </Pane>
+      <Pane layoutX="3.0" layoutY="477.0" prefHeight="62.0" prefWidth="94.0" style="-fx-background-color: blue; -fx-border-color: black;">
+         <children>
+            <Label layoutX="14.0" layoutY="6.0" text="Quantidade:" textFill="WHITE" />
+            <TextField fx:id="tfQuantidadeItem" layoutX="14.0" layoutY="23.0" prefHeight="30.0" prefWidth="65.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="108.0" layoutY="477.0" prefHeight="62.0" prefWidth="123.0" style="-fx-background-color: blue; -fx-border-color: black;">
+         <children>
+            <Label layoutX="14.0" layoutY="8.0" text="Valor Unitário:" textFill="WHITE" />
+            <TextField fx:id="tfValorItem" layoutX="14.0" layoutY="25.0" prefHeight="30.0" prefWidth="95.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="242.0" layoutY="477.0" prefHeight="62.0" prefWidth="156.0" style="-fx-background-color: blue; -fx-border-color: black;">
+         <children>
+            <Label layoutX="17.0" layoutY="8.0" text="Valor Total Item:" textFill="WHITE" />
+            <TextField fx:id="tfTotalItem" layoutX="17.0" layoutY="25.0" prefHeight="30.0" prefWidth="123.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="408.0" layoutY="477.0" prefHeight="62.0" prefWidth="90.0" style="-fx-background-color: blue; -fx-border-color: black;">
+         <children>
+            <Label layoutX="24.0" layoutY="9.0" text="Itens:" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbQtdeProdutos" layoutX="38.0" layoutY="32.0" text="123" textFill="#fce8e8">
+               <font>
+                  <Font name="Comic Sans MS Bold Italic" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="511.0" layoutY="477.0" prefHeight="62.0" prefWidth="245.0" style="-fx-background-color: blue; -fx-border-color: black;">
+         <children>
+            <Label layoutX="61.0" layoutY="6.0" text="Valor Total Compra:" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbTotalCompra" layoutX="101.0" layoutY="29.0" text="1230,00" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutY="545.0" prefHeight="62.0" prefWidth="758.0" style="-fx-background-color: blue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <GridPane layoutX="34.0" layoutY="8.0" prefHeight="46.0" prefWidth="691.0">
+               <children>
+                  <Hyperlink fx:id="hlNovaVenda" onAction="#actionNovaVenda" onKeyPressed="#actionTeclaAtalho" text="Nova Venda - F2" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="hlConsultarVenda" onAction="#actionConsultaVenda" onKeyPressed="#actionTeclaAtalho" text="Consultar Venda - F3" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="hlSelecionarCliente" disable="true" onAction="#actionSelecionarCliente" onKeyPressed="#actionTeclaAtalho" text="Selecionar Cliente - F4" textFill="WHITE" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="hlImprimirComprovante" onAction="#actionImprimirComprovante" onKeyPressed="#actionTeclaAtalho" text="Imprimir Comprovante - F5" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="hlConsultarPreco" onAction="#actionConsultaPreco" onKeyPressed="#actionTeclaAtalho" text="Consultar Preço - F6" textFill="WHITE" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="hlFinalizarVenda" disable="true" onAction="#actionFinalizarVenda" onKeyPressed="#actionTeclaAtalho" text="Finalizar Venda - F7" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="hlSair" onAction="#actionSair" onKeyPressed="#actionTeclaAtalho" text="Sair - ESC" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="hlExcluirItem" disable="true" onAction="#actionExcluirItem" onKeyPressed="#actionTeclaAtalho" text="Excluir Item - DEL" textFill="WHITE" GridPane.columnIndex="3">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </children></Pane>
+      <ListView fx:id="litsaItens" layoutX="405.0" layoutY="110.0" prefHeight="359.0" prefWidth="351.0" AnchorPane.rightAnchor="2.0" />
+   </children>
+</AnchorPane>

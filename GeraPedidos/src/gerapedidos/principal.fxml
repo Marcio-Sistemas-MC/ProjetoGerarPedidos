@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.input.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gerapedidos.principalController">
+    <children>
+        <MenuBar layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Cadastros">
+                    <items>
+                        <MenuItem fx:id="mnCliente" mnemonicParsing="false" onAction="#actionCadClientes" text="Cliente">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="mnProdutos" mnemonicParsing="false" onAction="#actionCadProdutos" text="Produtos">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="P" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Pedidos">
+                    <items>
+                        <MenuItem fx:id="mnPedidos" mnemonicParsing="false" onAction="#actionPeidosVendas" text="Pedido de Venda">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="V" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="mnComprovante" mnemonicParsing="false" onAction="#actionMnComprovante" text="Imprimir Comprovante ">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Contas Geradas">
+                    <items>
+                        <MenuItem fx:id="mnReceber" mnemonicParsing="false" onAction="#actionAReceber" text="A Receber">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="R" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Sobre">
+                    <items>
+                        <MenuItem fx:id="mnSobre" mnemonicParsing="false" onAction="#actionMnSobre" text="Sobre">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="S" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="mnSair" mnemonicParsing="false" onAction="#actionSairSistema" text="Sair" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ToolBar layoutY="25.0" orientation="VERTICAL" prefHeight="743.0" prefWidth="175.0" scaleShape="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="25.0">
+            <items>
+                <Button fx:id="btnClientes" contentDisplay="TOP" mnemonicParsing="false" onAction="#actionCadClientes" prefHeight="105.0" prefWidth="162.0" text="Clientes" />
+                <Button fx:id="btnProdutos" contentDisplay="TOP" layoutX="10.0" layoutY="86.0" mnemonicParsing="false" onAction="#actionCadProdutos" prefHeight="105.0" prefWidth="162.0" text="Produtos" />
+                <Button fx:id="btnPedidos" contentDisplay="TOP" layoutX="10.0" layoutY="127.0" mnemonicParsing="false" onAction="#actionPeidosVendas" prefHeight="105.0" prefWidth="162.0" text="Pedidos de Vendas" />
+                <Button fx:id="btnComprovante" contentDisplay="TOP" layoutX="10.0" layoutY="244.0" mnemonicParsing="false" onAction="#ActionImprimeComprovante" prefHeight="105.0" prefWidth="162.0" text="Comprovante" />
+                <Button fx:id="btnReceber" contentDisplay="TOP" layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onAction="#actionAReceber" prefHeight="105.0" prefWidth="162.0" text="A Receber" />
+            <Button fx:id="btnSair" contentDisplay="TOP" layoutX="10.0" layoutY="446.0" mnemonicParsing="false" onAction="#actionSairSistema" prefHeight="105.0" prefWidth="162.0" text="Sair" />
+            </items>
+        </ToolBar>
+        <Pane fx:id="painelExibir" layoutX="175.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+            <children>
+                <ImageView fx:id="imgLogo" fitHeight="150.0" fitWidth="200.0" layoutX="496.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true" />
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
