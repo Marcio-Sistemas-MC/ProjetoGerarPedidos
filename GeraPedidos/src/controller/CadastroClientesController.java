@@ -209,6 +209,8 @@ public class CadastroClientesController implements Initializable {
     private TabPane painelPrincipal;
     @FXML
     private DatePicker dtNascimento;
+    @FXML
+    private TabPane painellTipoPessoa;
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("geraPedidosPU");
     private List<Cidade> cidades = new ArrayList<>();
     private List<Estado> estados = new ArrayList<>();
@@ -245,6 +247,23 @@ public class CadastroClientesController implements Initializable {
 
     private void configuraCBTipo() {
         this.cbTipo.getItems().addAll("Física", "Jurídica");
+        this.cbTipo.getSelectionModel().selectFirst();
+        painellTipoPessoa.getSelectionModel().select(abaPessoaFisica);
+        abaPessoaFisica.setDisable(false);
+        abaPessoaJuridica.setDisable(true);
+        this.cbTipo.getSelectionModel().selectedItemProperty().addListener(( ov,  t,  t1) -> {
+            if (t.equalsIgnoreCase("Física")) {
+                painellTipoPessoa.getSelectionModel().select(abaPessoaJuridica);
+                abaPessoaJuridica.setDisable(false);
+                abaPessoaFisica.setDisable(true);
+                this.cbContribuinte.getSelectionModel().select(1);
+            } else {
+                painellTipoPessoa.getSelectionModel().select(abaPessoaFisica);
+                abaPessoaFisica.setDisable(false);
+                abaPessoaJuridica.setDisable(true);
+                this.cbContribuinte.getSelectionModel().select(0);
+            }
+        });
     }
 
     private void configuraCbEstadoCivil() {
@@ -323,19 +342,20 @@ public class CadastroClientesController implements Initializable {
         this.btnSalvar.setDisable(false);
         this.btnUltimo.setDisable(true);
 
-       configuraDadosIniciais();
+        configuraDadosIniciais();
         // carregar dados, Salvar;
     }
-    
+
     private void configuraDadosIniciais() {
-         this.dtAdimissao.setValue(LocalDate.now());
-         this.lbAtivo.setText("SIM");
-         this.configuraTextoAtivo();
-         this.cbUFComercial.setValue("MG");
-         // Talvez será necessário habilitar as cidades....
-         this.cbUFDomicilio.setValue("MG");
-         this.cbContribuinte.getSelectionModel().selectFirst();
-         
+        this.dtAdimissao.setValue(LocalDate.now());
+        this.cbTipo.getSelectionModel().selectFirst();
+        this.lbAtivo.setText("SIM");
+        this.configuraTextoAtivo();
+        this.cbUFComercial.setValue("MG");
+        // Talvez será necessário habilitar as cidades....
+        this.cbUFDomicilio.setValue("MG");
+        this.cbContribuinte.getSelectionModel().selectFirst();
+
     }
 
     private boolean validaDadosObrigatorios() {// Verificar o preenchimento de alguns campos necessários obrigatóriamente
@@ -642,9 +662,9 @@ public class CadastroClientesController implements Initializable {
         }
         configuraTextoAtivo();
     }
-    
+
     private void configuraTextoAtivo() {
-        if(this.lbAtivo.getText().equalsIgnoreCase("SIM")) {
+        if (this.lbAtivo.getText().equalsIgnoreCase("SIM")) {
             this.lbAtivo.setTextFill(Paint.valueOf("GREEN"));
         } else {
             this.lbAtivo.setTextFill(Paint.valueOf("RED"));
@@ -787,11 +807,11 @@ public class CadastroClientesController implements Initializable {
         int max = 0;
         this.buscaClientes();
         for (Clientes c : clientes) {
-            if(c.getCodpessoa() > max) {
+            if (c.getCodpessoa() > max) {
                 max = c.getCodpessoa();
             }
         }
-        return max; 
+        return max;
     }
-    
+
 }

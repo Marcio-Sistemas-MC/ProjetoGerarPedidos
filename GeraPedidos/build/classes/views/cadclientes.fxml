@@ -357,7 +357,7 @@
                               </Tab>
                           </tabs>
                         </TabPane>
-                        <TabPane layoutY="38.0" prefHeight="212.0" prefWidth="750.0" style="-fx-border-color: #000000;" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <TabPane fx:id="painellTipoPessoa" layoutY="38.0" prefHeight="212.0" prefWidth="750.0" style="-fx-border-color: #000000;" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                           <tabs>
                             <Tab fx:id="abaPessoaFisica" text="Pessoa Física">
                               <content>
