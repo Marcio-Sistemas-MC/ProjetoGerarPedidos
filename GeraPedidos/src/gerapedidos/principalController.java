@@ -6,10 +6,16 @@
 package gerapedidos;
 
 
+import UTIL.Alerta;
+import controller.ClientesController;
 import java.io.IOException;
+import static java.lang.System.exit;
 import java.net.URL;
 import java.util.ResourceBundle;
+import static javafx.application.Platform.exit;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -173,19 +179,30 @@ public class principalController implements Initializable {
 
     @FXML
     private void actionCadClientes(ActionEvent event) throws IOException, Exception {
-        //Parent cliente = FXMLLoader.load(getClass().getResource("/aplicacao/clientes.fxml"));
-        Parent cliente = FXMLLoader.load(getClass().getResource("/views/cadclientes.fxml"));
+        Parent cliente = FXMLLoader.load(getClass().getResource("/views/clientes.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(cliente);
         stage.setScene(scene);
         stage.setTitle("Cadastro de Clientes");
         stage.setResizable(false);
         stage.getIcons().add(clienteIcone);
-        //setUserAgentStylesheet(STYLESHEET_MODENA);
+        //stage.setHeight(550);
+       // stage.setWidth(995);
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(this.painelExibir.getScene().getWindow());
         stage.centerOnScreen();
         telaClientes = stage;
+        stage.setOnCloseRequest(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                if(ClientesController.emEdicaoInclusao()) {
+                    Alerta a = new Alerta(0,"Atençao","Cadastro em edição.\n Caso deseje sair, clique em 'Cancelar' primeiro!!!");
+                }
+                else {
+                    stage.close();
+                }
+            }
+        });
         stage.show();
     }
 
@@ -194,7 +211,7 @@ public class principalController implements Initializable {
         //Parent cliente = FXMLLoader.load(getClass().getResource("/aplicacao/produtos.fxml"));
         Parent cliente = FXMLLoader.load(getClass().getResource("/views/cadprodutos.fxml"));
         Stage stage = new Stage();
-        this.telaProdutos = stage;
+        telaProdutos = stage;
         stage.setScene(new Scene(cliente));
         stage.setTitle("Cadastro de Produtos");
         stage.setResizable(false);

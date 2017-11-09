@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="995.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientesController">
+   <children>
+      <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="13.0" spacing="15.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="13.0" prefHeight="25.0" prefWidth="766.0" spacing="10.0">
+               <children>
+                  <Label layoutX="15.0" layoutY="17.0" text="Nome:" />
+                  <ComboBox fx:id="cbCliente" editable="true" prefHeight="25.0" prefWidth="523.0" />
+                  <Label layoutX="615.0" layoutY="17.0" text="Código:" />
+                  <TextField fx:id="tfCodigo" layoutX="644.0" layoutY="13.0" prefHeight="25.0" prefWidth="136.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="42.0" prefHeight="25.0" prefWidth="766.0" spacing="10.0">
+               <children>
+                  <Label layoutX="16.0" layoutY="42.0" text="Empresa:" />
+                  <TextField fx:id="tfEmpresa" layoutX="69.0" layoutY="47.0" prefHeight="25.0" prefWidth="299.0" />
+                  <Label text="CPF/CNPJ:" />
+                  <TextField fx:id="tfcpfcnpj" prefHeight="25.0" prefWidth="141.0" />
+                  <Label text="IE/RG:" />
+                  <TextField fx:id="tfIeRg" prefHeight="25.0" prefWidth="141.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="83.0" spacing="10.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="87.0" text="Endereço:" />
+                  <TextField fx:id="tfEndereco" layoutX="80.0" layoutY="83.0" prefHeight="25.0" prefWidth="515.0" />
+                  <Label layoutX="599.0" layoutY="87.0" text="Númeo:" />
+                  <TextField fx:id="tfNumero" layoutX="648.0" layoutY="83.0" prefHeight="25.0" prefWidth="126.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="127.0" prefHeight="25.0" prefWidth="766.0" spacing="10.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="131.0" text="Bairro:" />
+                  <TextField fx:id="tfBairro" layoutX="55.0" layoutY="127.0" prefHeight="25.0" prefWidth="236.0" />
+                  <Label layoutX="287.0" layoutY="139.0" text="Cidade:" />
+                  <ComboBox fx:id="cbCidade" editable="true" layoutX="334.0" layoutY="135.0" prefHeight="25.0" prefWidth="263.0" />
+                  <Label layoutX="566.0" layoutY="139.0" text="UF:" />
+                  <TextField fx:id="tfUF" layoutX="597.0" layoutY="135.0" prefHeight="25.0" prefWidth="42.0" />
+                  <CheckBox fx:id="ckAtivo" layoutX="665.0" layoutY="139.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="59.0" text="Ativo" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="23.0" layoutY="164.0" prefHeight="25.0" prefWidth="766.0" spacing="10.0">
+               <children>
+                  <Label layoutX="23.0" layoutY="168.0" text="Telefone:" />
+                  <TextField fx:id="tftelefone" layoutX="80.0" layoutY="164.0" />
+                  <Label layoutX="290.0" layoutY="176.0" text="Celular:" />
+                  <TextField fx:id="tfCelular" layoutX="341.0" layoutY="172.0" />
+                  <Label layoutX="606.0" layoutY="185.0" text="Email:" />
+                  <TextField fx:id="tfEmail" layoutX="635.0" layoutY="181.0" prefHeight="25.0" prefWidth="296.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Group>
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="185.0" layoutX="796.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="190.0" />
+            <ImageView fitHeight="152.0" fitWidth="161.0" layoutX="811.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icones/cliente.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
+      <TableView fx:id="tbClientes" layoutX="6.0" layoutY="204.0" prefHeight="296.0" prefWidth="983.0">
+        <columns>
+          <TableColumn fx:id="clCodigo" prefWidth="46.0" text="Código" />
+          <TableColumn fx:id="clNome" prefWidth="114.0" text="Nome" />
+            <TableColumn fx:id="clEmpresa" prefWidth="110.0" text="Empresa" />
+            <TableColumn fx:id="clCpfCnpj" prefWidth="73.0" text="CPF/CNPJ" />
+            <TableColumn fx:id="clIeRg" prefWidth="72.0" text="IE/RG" />
+            <TableColumn fx:id="clEndereco" prefWidth="103.0" text="Endereço" />
+            <TableColumn fx:id="clNumero" prefWidth="79.0" text="Número" />
+            <TableColumn fx:id="clBairro" prefWidth="62.0" text="Bairro" />
+            <TableColumn fx:id="clCidade" prefWidth="73.0" text="Cidade" />
+            <TableColumn fx:id="clUF" prefWidth="30.0" text="UF" />
+            <TableColumn fx:id="clTelefone" prefWidth="61.0" text="Telefone" />
+            <TableColumn fx:id="clCelular" prefWidth="50.0" text="Celular" />
+            <TableColumn fx:id="clEmail" prefWidth="66.0" text="Email" />
+            <TableColumn fx:id="clAtivo" prefWidth="43.0" text="Ativo" />
+        </columns>
+      </TableView>
+      <Pane layoutX="6.0" layoutY="500.0" prefHeight="48.0" prefWidth="983.0">
+         <children>
+            <HBox layoutX="14.0" layoutY="9.0" prefHeight="31.0" prefWidth="131.0" spacing="5.0">
+               <children>
+                  <Button fx:id="btnPrimeiro" mnemonicParsing="false" onAction="#actionBtnPrimeiro" prefHeight="31.0" prefWidth="33.0" text="&lt;&lt;">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnAnterior" mnemonicParsing="false" onAction="#actionBtnAnterior" prefHeight="31.0" prefWidth="25.0" text="&lt;">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnProximo" mnemonicParsing="false" onAction="#actionBtnProximo" prefHeight="31.0" prefWidth="25.0" text="&gt;">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnUltimo" mnemonicParsing="false" onAction="#actionBtnUltimo" prefHeight="31.0" prefWidth="33.0" text="&gt;&gt;">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="175.0" layoutY="8.0" prefHeight="32.0" prefWidth="375.0" spacing="10.0">
+               <children>
+                  <Button fx:id="btnIncluir" layoutX="217.0" layoutY="12.0" mnemonicParsing="false" onAction="#actionBtnIncluir" prefHeight="31.0" prefWidth="85.0" text="Incuir">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icones/novo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnAlterar" layoutX="143.0" layoutY="12.0" mnemonicParsing="false" onAction="#actionBtnAlterar" prefHeight="31.0" prefWidth="85.0" text="Alterar">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icones/editar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#actionBtnCancelar" prefHeight="31.0" prefWidth="85.0" text="Cancelar">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icones/cancelar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#actionBtnSalvar" prefHeight="31.0" prefWidth="89.0" text="Salvar">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icones/salvar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="btnSair" layoutX="878.0" layoutY="9.0" mnemonicParsing="false" onAction="#ActionBtnSair" prefHeight="31.0" prefWidth="85.0" text="Sair">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icones/sair.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

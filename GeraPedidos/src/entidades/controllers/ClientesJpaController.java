@@ -7,6 +7,7 @@ package entidades.controllers;
 
 import entidades.banco.Clientes;
 import entidades.controllers.exceptions.NonexistentEntityException;
+import entidades.controllers.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -31,13 +32,18 @@ public class ClientesJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Clientes clientes) {
+    public void create(Clientes clientes) throws PreexistingEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             em.persist(clientes);
             em.getTransaction().commit();
+        } catch (Exception ex) {
+            if (findClientes(clientes.getCodpessoa()) != null) {
+                throw new PreexistingEntityException("Clientes " + clientes + " already exists.", ex);
+            }
+            throw ex;
         } finally {
             if (em != null) {
                 em.close();

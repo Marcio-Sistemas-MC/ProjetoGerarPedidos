@@ -7,348 +7,416 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProdutosController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProdutosController">
    <children>
-      <HBox alignment="CENTER" layoutX="14.0" prefHeight="41.0" prefWidth="752.0" spacing="5.0" style="-fx-border-color: #000000;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <TextField fx:id="tfCodProduto" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="89.0" promptText="Cód. Produto" />
-            <Label layoutX="119.0" layoutY="18.0" text="Descrição:">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tfDescricaoProduto" layoutX="183.0" layoutY="14.0" prefHeight="25.0" prefWidth="378.0" promptText="Descrição do Produto" />
-            <Label text="Tipo:">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="14.0" />
-               </font>
-            </Label>
-            <ComboBox fx:id="cbTipoProduto" prefHeight="25.0" prefWidth="123.0" promptText="Venda" />
-         </children>
-      </HBox>
-      <TabPane layoutY="41.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #000000;" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <tabs>
-          <Tab fx:id="abaProduto" text="Dados Produto">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+      <TabPane fx:id="painelPrincipal" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <tabs>
+            <Tab fx:id="abaProdutos" closable="false" text="Produtos">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="514.0" prefWidth="752.0">
                      <children>
-                        <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="15.0" spacing="10.0">
+                        <TableView fx:id="tabelaProdutos" layoutY="71.0" onKeyPressed="#verificaSelecaoItem" onMouseClicked="#verificaClickItem" prefHeight="460.0" prefWidth="752.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <columns>
+                              <TableColumn fx:id="colCodigo" prefWidth="63.0" text="Código" />
+                              <TableColumn fx:id="colDescricao" prefWidth="257.0" text="Descrição" />
+                              <TableColumn fx:id="colReferencia" prefWidth="112.0" text="Referência" />
+                              <TableColumn fx:id="colunMedida" prefWidth="71.0" text="Un. Medida" />
+                              <TableColumn fx:id="colCusto" prefWidth="78.0" text="Custo" />
+                              <TableColumn fx:id="colVista" prefWidth="89.0" text="A Vista" />
+                              <TableColumn fx:id="colPrazo" text="A Prazo" />
+                           </columns>
+                        </TableView>
+                        <HBox alignment="CENTER" layoutX="15.0" layoutY="14.0" prefHeight="40.0" prefWidth="723.0" spacing="15.0" style="-fx-border-color: black;">
                            <children>
-                              <HBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="15.0" prefHeight="28.0" prefWidth="584.0" spacing="7.0">
-                                 <children>
-                                    <Label layoutX="16.0" layoutY="17.0" text="Código Barras:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfCodBarras" layoutX="123.0" layoutY="16.0" promptText="Referência " />
-                                    <Button fx:id="btnGerarCodigoBarras" layoutX="278.0" layoutY="15.0" mnemonicParsing="false" onAction="#actionBtnGerarCodigoBarras" onKeyPressed="#btnCodBarrasPressed" prefHeight="28.0" prefWidth="35.0">
-                                       <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../icones/Barcodes-icon.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Label layoutX="490.0" layoutY="17.0" text="Apresentação:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfApresentacao" layoutX="594.0" layoutY="15.0" prefHeight="25.0" prefWidth="173.0" promptText="Apresentação do item" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" layoutX="17.0" layoutY="35.0" prefHeight="28.0" prefWidth="584.0" spacing="7.0">
-                                 <children>
-                                    <Label layoutX="16.0" layoutY="17.0" text="Código GTIN:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfCodGtin" layoutX="123.0" layoutY="16.0" promptText="Código Original do Produto" />
-                                    <Label layoutX="490.0" layoutY="17.0" text="Medida:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfMedida" layoutX="594.0" layoutY="15.0" prefHeight="25.0" prefWidth="197.0" promptText="Outras inf. importantes" />
-                                    <CheckBox fx:id="ckAtivo" mnemonicParsing="false" text="Ativo">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </CheckBox>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="49.0" spacing="7.0">
-                                 <children>
-                                    <Label layoutX="16.0" layoutY="51.0" text="Unidade Medida:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <ComboBox fx:id="cbUnidMedida" layoutX="139.0" layoutY="49.0" prefHeight="25.0" prefWidth="71.0" promptText="UN" />
-                                    <Label text="Peso Bruto:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfPesoBruto" prefHeight="25.0" prefWidth="99.0" promptText="1000" />
-                                    <Label text="Peso Líquido:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfPedoLiquido" prefHeight="25.0" prefWidth="99.0" promptText="1000" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="85.0" spacing="7.0">
-                                 <children>
-                                    <Label layoutX="14.0" layoutY="85.0" text="Código NCM:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfCodNcm" prefHeight="25.0" prefWidth="107.0" promptText="Código NCM" />
-                                    <Label layoutX="193.0" layoutY="86.0" text="Cód. CEST:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfCodCest" prefHeight="25.0" prefWidth="117.0" promptText="Código CEST" />
-                                    <Label layoutX="375.0" layoutY="86.0" text="Validade:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfVaidade" prefHeight="25.0" prefWidth="94.0" promptText="X Dias" />
-                                 </children>
-                              </HBox>
+                              <ComboBox fx:id="cbCampos" layoutX="8.0" layoutY="16.0" prefWidth="150.0">
+                                 <tooltip>
+                                    <Tooltip text="Selecione o campo a ser consultado!" />
+                                 </tooltip>
+                              </ComboBox>
+                              <TextField fx:id="tfConsulta" layoutX="168.0" layoutY="16.0" prefHeight="25.0" prefWidth="415.0" promptText="Digite o Termo que deseja Consultar:">
+                                 <tooltip>
+                                    <Tooltip text="Digite o Termo que deseja Consultar:" />
+                                 </tooltip>
+                              </TextField>
+                              <Button fx:id="btnConsultar" layoutX="603.0" layoutY="14.0" mnemonicParsing="false" onAction="#actionConsultarProdutos" prefHeight="28.0" prefWidth="118.0" text="Consultar">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icones/localizar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Disparar a Consulta" />
+                                 </tooltip>
+                              </Button>
                            </children>
-                        </VBox>
+                        </HBox>
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
-          <Tab fx:id="abaObservacao" text="Observação">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TextArea fx:id="taObservacao" prefHeight="169.0" prefWidth="752.0" style="-fx-border-color: blue;" />
-                     </children></AnchorPane>
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-      <TabPane layoutY="241.0" prefHeight="145.0" prefWidth="752.0" style="-fx-border-color: #000000;" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <tabs>
-            <Tab fx:id="abaPrecos" text="Preços">
+              </content>
+            </Tab>
+            <Tab fx:id="abaDados" closable="false" text="Dados Produto">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="139.0" prefWidth="750.0">
+                  <AnchorPane>
                      <children>
-                        <VBox alignment="CENTER_LEFT" layoutX="13.0" layoutY="10.0" spacing="10.0">
+                        <HBox alignment="CENTER" prefHeight="41.0" prefWidth="752.0" spacing="5.0" style="-fx-border-color: #000000;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" layoutX="22.0" layoutY="10.0" spacing="5.0">
-                                 <children>
-                                    <Label layoutX="22.0" layoutY="14.0" text="Custo Compra:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfCustoCompra" editable="false" layoutX="136.0" layoutY="12.0" prefHeight="25.0" prefWidth="89.0" promptText="R$00,00" />
-                                    <Label layoutX="225.0" layoutY="14.0" text="Margem:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfMargemLucro" editable="false" layoutX="287.0" layoutY="12.0" prefHeight="25.0" prefWidth="89.0" promptText="100%" />
-                                    <Label layoutX="385.0" layoutY="14.0" text="Preço Vista:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfPrecoVista" editable="false" layoutX="469.0" layoutY="10.0" prefHeight="25.0" prefWidth="89.0" promptText="R$00,00" />
-                                 </children>
-                              </HBox>
-                              <HBox layoutX="13.0" layoutY="45.0" prefHeight="25.0" prefWidth="438.0" spacing="5.0">
-                                 <children>
-                                    <Label layoutX="13.0" layoutY="47.0" text="Acrécimo Financeiro:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfAcrescimoFin" editable="false" layoutX="181.0" layoutY="45.0" prefHeight="25.0" prefWidth="89.0" promptText="100%" />
-                                    <Label layoutX="331.0" layoutY="47.0" text="Preço Prazo:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfPrecoPrazo" editable="false" layoutX="425.0" layoutY="45.0" prefHeight="25.0" prefWidth="104.0" promptText="R$00,00" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="79.0" spacing="10.0">
-                                 <children>
-                                    <Label layoutX="32.0" layoutY="79.0" text="Data Reajuste:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="lbDataReajuste" layoutX="143.0" layoutY="79.0" text="Data Reajuste:" textFill="BLUE">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="295.0" layoutY="79.0" text="Usuário Reajuste:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="lbUsuarioReajuste" layoutX="432.0" layoutY="79.0" text="Usuário Reajuste" textFill="BLUE">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
+                              <TextField fx:id="tfCodProduto" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="89.0" promptText="Cód. Produto" />
+                              <Label layoutX="119.0" layoutY="18.0" text="Descrição:">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="tfDescricaoProduto" layoutX="183.0" layoutY="14.0" prefHeight="25.0" prefWidth="378.0" promptText="Descrição do Produto" />
+                              <Label text="Tipo:">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="cbTipoProduto" prefHeight="25.0" prefWidth="123.0" />
                            </children>
-                        </VBox>
-                        <Separator layoutX="566.0" layoutY="1.0" orientation="VERTICAL" prefHeight="113.0" prefWidth="0.0" />
-                        <Button layoutX="604.0" layoutY="42.0" mnemonicParsing="false" text="Reajustar">
-                           <font>
-                              <Font name="Comic Sans MS Bold" size="14.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icones/dinheiro.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
+                        </HBox>
+                        <TabPane layoutY="41.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #000000;" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                          <tabs>
+                            <Tab fx:id="abaProduto" text="Dados Produto">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="15.0" spacing="10.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="15.0" prefHeight="28.0" prefWidth="584.0" spacing="7.0">
+                                                   <children>
+                                                      <Label layoutX="16.0" layoutY="17.0" text="Código Barras:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfCodBarras" layoutX="123.0" layoutY="16.0" promptText="Referência " />
+                                                      <Button fx:id="btnGerarCodigoBarras" layoutX="278.0" layoutY="15.0" mnemonicParsing="false" onAction="#actionBtnGerarCodigoBarras" onKeyPressed="#btnCodBarrasPressed" prefHeight="28.0" prefWidth="35.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icones/Barcodes-icon.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                         <tooltip>
+                                                            <Tooltip text="Gerar Referência" />
+                                                         </tooltip>
+                                                      </Button>
+                                                      <Label layoutX="490.0" layoutY="17.0" text="Apresentação:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfApresentacao" layoutX="594.0" layoutY="15.0" prefHeight="25.0" prefWidth="173.0" promptText="Apresentação do item" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" layoutX="17.0" layoutY="35.0" prefHeight="28.0" prefWidth="584.0" spacing="7.0">
+                                                   <children>
+                                                      <Label layoutX="16.0" layoutY="17.0" text="Código GTIN:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfCodGtin" layoutX="123.0" layoutY="16.0" promptText="Código Original do Produto" />
+                                                      <Label layoutX="490.0" layoutY="17.0" text="Medida:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfMedida" layoutX="594.0" layoutY="15.0" prefHeight="25.0" prefWidth="197.0" promptText="Outras inf. importantes" />
+                                                      <CheckBox fx:id="ckAtivo" mnemonicParsing="false" text="Ativo">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </CheckBox>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="49.0" spacing="7.0">
+                                                   <children>
+                                                      <Label layoutX="16.0" layoutY="51.0" text="Unidade Medida:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <ComboBox fx:id="cbUnidMedida" layoutX="139.0" layoutY="49.0" prefHeight="25.0" prefWidth="71.0" />
+                                                      <Label text="Peso Bruto:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfPesoBruto" prefHeight="25.0" prefWidth="99.0" promptText="1000" />
+                                                      <Label text="Peso Líquido:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfPesoLiquido" prefHeight="25.0" prefWidth="99.0" promptText="1000" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="85.0" spacing="7.0">
+                                                   <children>
+                                                      <Label layoutX="14.0" layoutY="85.0" text="Código NCM:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfCodNcm" prefHeight="25.0" prefWidth="107.0" promptText="Código NCM" />
+                                                      <Label layoutX="193.0" layoutY="86.0" text="Cód. CEST:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfCodCest" prefHeight="25.0" prefWidth="117.0" promptText="Código CEST" />
+                                                      <Label layoutX="375.0" layoutY="86.0" text="Validade:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfVaidade" prefHeight="25.0" prefWidth="94.0" promptText="X Dias" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab fx:id="abaObservacao" text="Observação">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextArea fx:id="taObservacao" prefHeight="169.0" prefWidth="752.0" style="-fx-border-color: blue;" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                        <TabPane layoutY="241.0" prefHeight="145.0" prefWidth="752.0" style="-fx-border-color: #000000;" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <tabs>
+                              <Tab fx:id="abaPrecos" text="Preços">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="139.0" prefWidth="750.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" layoutX="13.0" layoutY="10.0" spacing="10.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" layoutX="22.0" layoutY="10.0" spacing="5.0">
+                                                   <children>
+                                                      <Label layoutX="22.0" layoutY="14.0" text="Custo Compra:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfCustoCompra" editable="false" layoutX="136.0" layoutY="12.0" prefHeight="25.0" prefWidth="89.0" promptText="R$00,00" />
+                                                      <Label layoutX="225.0" layoutY="14.0" text="Margem:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfMargemLucro" editable="false" layoutX="287.0" layoutY="12.0" prefHeight="25.0" prefWidth="89.0" promptText="100%" />
+                                                      <Label layoutX="385.0" layoutY="14.0" text="Preço Vista:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfPrecoVista" editable="false" layoutX="469.0" layoutY="10.0" prefHeight="25.0" prefWidth="89.0" promptText="R$00,00" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox layoutX="13.0" layoutY="45.0" prefHeight="25.0" prefWidth="438.0" spacing="5.0">
+                                                   <children>
+                                                      <Label layoutX="13.0" layoutY="47.0" text="Acrécimo Financeiro:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfAcrescimoFin" editable="false" layoutX="181.0" layoutY="45.0" prefHeight="25.0" prefWidth="89.0" promptText="100%" />
+                                                      <Label layoutX="331.0" layoutY="47.0" text="Preço Prazo:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfPrecoPrazo" editable="false" layoutX="425.0" layoutY="45.0" prefHeight="25.0" prefWidth="104.0" promptText="R$00,00" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="79.0" spacing="10.0">
+                                                   <children>
+                                                      <Label layoutX="32.0" layoutY="79.0" text="Data Reajuste:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lbDataReajuste" layoutX="143.0" layoutY="79.0" text="10/10/2017" textFill="BLUE">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="295.0" layoutY="79.0" text="Usuário Reajuste:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lbUsuarioReajuste" layoutX="432.0" layoutY="79.0" text="Usuário Reajuste" textFill="BLUE">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <Separator layoutX="566.0" layoutY="1.0" orientation="VERTICAL" prefHeight="113.0" prefWidth="0.0" />
+                                          <Button layoutX="604.0" layoutY="42.0" mnemonicParsing="false" text="Reajustar">
+                                             <font>
+                                                <Font name="Comic Sans MS Bold" size="14.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icones/dinheiro.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <tooltip>
+                                                <Tooltip text="Reajustar Preços do Produto" />
+                                             </tooltip>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </TabPane>
+                        <TabPane layoutY="386.0" prefHeight="145.0" prefWidth="752.0" style="-fx-border-color: #000000;" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                          <tabs>
+                            <Tab fx:id="abaEstoques" text="Estoques">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="139.0" prefWidth="750.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="10.0" spacing="10.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="10.0" spacing="7.0">
+                                                   <children>
+                                                      <Label layoutX="14.0" layoutY="14.0" text="Quantidade em Estoque:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfEstoque" layoutX="181.0" layoutY="12.0" promptText="100" />
+                                                      <Label layoutX="351.0" layoutY="14.0" text="Estoque Mínimo:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfEstoqueMin" layoutX="485.0" layoutY="10.0" promptText="5" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="35.0" spacing="7.0">
+                                                   <children>
+                                                      <Label layoutX="14.0" layoutY="35.0" prefHeight="21.0" prefWidth="123.0" text="Estoque Máximo:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfEstoqueMax" layoutX="129.0" layoutY="44.0" promptText="100" />
+                                                      <Label layoutX="345.0" layoutY="35.0" prefHeight="21.0" prefWidth="155.0" text="Quantidade Pedidos:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfQdPedidos" layoutX="492.0" layoutY="44.0" promptText="0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="65.0" spacing="7.0">
+                                                   <children>
+                                                      <Label layoutX="14.0" layoutY="67.0" text="Quantidade Pedida p/ Compra:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="tfQdCompra" layoutX="236.0" layoutY="65.0" promptText="0" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                              <Tab text="Estatísticas">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="14.0" spacing="10.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="14.0" spacing="10.0">
+                                                   <children>
+                                                      <Label layoutX="14.0" layoutY="14.0" text="Última Venda:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lbUltimaVenda" layoutX="135.0" layoutY="14.0" text="Data Venda" textFill="BLUE">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="327.0" layoutY="14.0" text="Quantidade Vendida:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lbQdUltVenda" layoutX="510.0" layoutY="14.0" text="X Unidades" textFill="BLUE">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="47.0" spacing="10.0">
+                                                   <children>
+                                                      <Label layoutX="14.0" layoutY="47.0" text="Última Compra:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lbUltCompra" layoutX="126.0" layoutY="47.0" text="Data Compra" textFill="BLUE">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="315.0" layoutY="47.0" text="Quantidade Comprada:">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lbQdultCompra" layoutX="510.0" layoutY="47.0" text="X Unidades" textFill="BLUE">
+                                                         <font>
+                                                            <Font name="Comic Sans MS Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
          </tabs>
       </TabPane>
-      <TabPane layoutY="386.0" prefHeight="145.0" prefWidth="752.0" style="-fx-border-color: #000000;" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <tabs>
-          <Tab fx:id="abaEstoques" text="Estoques">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="139.0" prefWidth="750.0">
-                     <children>
-                        <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="10.0" spacing="10.0">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="10.0" spacing="7.0">
-                                 <children>
-                                    <Label layoutX="14.0" layoutY="14.0" text="Quantidade em Estoque:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField layoutX="181.0" layoutY="12.0" promptText="100" />
-                                    <Label layoutX="351.0" layoutY="14.0" text="Estoque Mínimo:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField layoutX="485.0" layoutY="10.0" promptText="5" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="35.0" spacing="7.0">
-                                 <children>
-                                    <Label layoutX="14.0" layoutY="35.0" prefHeight="21.0" prefWidth="123.0" text="Estoque Máximo:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField layoutX="129.0" layoutY="44.0" promptText="100" />
-                                    <Label layoutX="345.0" layoutY="35.0" prefHeight="21.0" prefWidth="155.0" text="Quantidade Pedidos:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField layoutX="492.0" layoutY="44.0" promptText="0" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="65.0" spacing="7.0">
-                                 <children>
-                                    <Label layoutX="14.0" layoutY="67.0" text="Quantidade Pedida p/ Compra:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField layoutX="236.0" layoutY="65.0" promptText="0" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children></AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="Estatísticas">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="14.0" spacing="10.0">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="14.0" spacing="10.0">
-                                 <children>
-                                    <Label layoutX="14.0" layoutY="14.0" text="Última Venda:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="135.0" layoutY="14.0" text="Data Venda" textFill="BLUE">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="327.0" layoutY="14.0" text="Quantidade Vendida:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="510.0" layoutY="14.0" text="X Unidades" textFill="BLUE">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="47.0" spacing="10.0">
-                                 <children>
-                                    <Label layoutX="14.0" layoutY="47.0" text="Última Compra:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="126.0" layoutY="47.0" text="Data Compra" textFill="BLUE">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="315.0" layoutY="47.0" text="Quantidade Comprada:">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="510.0" layoutY="47.0" text="X Unidades" textFill="BLUE">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-      <ToolBar layoutY="531.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <ToolBar layoutY="531.0" prefHeight="40.0" prefWidth="752.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <items>
             <Button fx:id="btnPrimeiro" mnemonicParsing="false" onAction="#actionBtnPrimeiro" onKeyPressed="#btnEnterPressed" text="&lt;&lt;">
                <font>
